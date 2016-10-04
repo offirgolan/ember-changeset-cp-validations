@@ -1,13 +1,14 @@
 import Ember from 'ember';
-import validate from 'ember-changeset-cp-validations';
-import { changeset as _changeset } from 'ember-changeset/helpers/changeset';
+import buildChangeset from 'ember-changeset-cp-validations';
+import Changeset from 'ember-changeset';
 
 const {
   Helper: { helper }
 } = Ember;
 
-export function changeset([ obj, fn ], ...args) {
-  return _changeset([ obj, fn || validate(obj) ], ...args);
+export function changeset([ obj, fn ]) {
+  let { validateFn, validationMap } = buildChangeset(obj);
+  return new Changeset(obj, fn || validateFn, validationMap);
 }
 
 export default helper(changeset);
