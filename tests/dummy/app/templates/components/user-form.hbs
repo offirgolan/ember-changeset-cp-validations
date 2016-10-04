@@ -1,0 +1,13 @@
+{{#with (changeset model) as |changeset|}}
+  <form>
+    {{input value=changeset.username placeholder="Username"}}
+    {{input value=changeset.password placeholder="Password"}}
+    {{input value=changeset.email placeholder="Email"}}
+
+    <p>{{v-get model 'username' 'message'}}</p>
+    <p>{{changeset.error.password.validation}}</p>
+
+    <button {{action submit changeset}}>Submit</button>
+    <button {{action rollback changeset}}>Cancel</button>
+  </form>
+{{/with}}
