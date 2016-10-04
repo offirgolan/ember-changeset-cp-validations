@@ -1,11 +1,12 @@
 import Ember from 'ember';
+import Changeset from 'ember-changeset';
 
 const {
   assert,
   typeOf
 } = Ember;
 
-export default function buildChangeset(model) {
+export function buildChangeset(model) {
   assert('Object does not contain any validations', typeOf(model.get('validations')) === 'instance');
 
   return {
@@ -16,8 +17,21 @@ export default function buildChangeset(model) {
 
     validateFn: ({ key, newValue }) => {
       return model.validateAttribute(key, newValue).then(({ validations }) => {
-        return validations.get('isTruelyValid') ? true : validations.get('message');
+        return validations.get('isValid') ? true : validations.get('message');
       });
     }
   };
+}
+
+export default function createChangeset(model, fn) {
+  let { validateFn, validationMap } = buildChangeset(model);
+  let _fn;
+
+  if (fn && typeof fn === 'function') {
+    _fn = function() {
+      return fn(...arguments, validateFn);
+    };
+  }
+
+  return new Changeset(model, _fn || validateFn, validationMap);
 }
