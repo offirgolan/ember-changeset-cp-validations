@@ -10,7 +10,7 @@ Ember CP Validations support for Ember Changeset
 
 ## Requirements
 
-- [ember-cp-validations](https://github.com/offirgolan/ember-cp-validations) v3.0.0 or above
+- [ember-cp-validations](https://github.com/offirgolan/ember-cp-validations) v3.1.0 or above
 - [ember-changeset](https://github.com/DockYard/ember-changeset)
 
 ## Installation
