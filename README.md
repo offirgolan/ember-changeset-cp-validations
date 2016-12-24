@@ -45,7 +45,7 @@ sure to call the passed `validate` method to run the necessary validations.
 
 ```hbs
 {{dummy-form
-    changeset=(changeset user (action 'customValidate))
+    changeset=(changeset user (action "customValidate"))
     submit=(action "submit")
     rollback=(action "rollback")
 }}
