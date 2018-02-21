@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import EmberObject from '@ember/object';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 export const Validations = buildValidations({
@@ -24,4 +24,4 @@ export const Validations = buildValidations({
   }
 });
 
-export default Ember.Object.extend(Validations);
+export default EmberObject.extend(Validations);
