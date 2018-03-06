@@ -1,9 +1,5 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 import createChangeset from 'ember-changeset-cp-validations';
-
-const {
-  Helper: { helper }
-} = Ember;
 
 export function changeset([ obj, fn ]) {
   return createChangeset(obj, fn);

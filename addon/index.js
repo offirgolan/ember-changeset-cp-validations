@@ -1,10 +1,6 @@
-import Ember from 'ember';
+import { assert } from '@ember/debug';
+import { typeOf } from '@ember/utils';
 import Changeset from 'ember-changeset';
-
-const {
-  assert,
-  typeOf
-} = Ember;
 
 export function buildChangeset(model) {
   assert('Object does not contain any validations', typeOf(model.get('validations')) === 'instance');

@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { resolve } from 'rsvp';
 import DS from 'ember-data';
 import { validator, buildValidations } from 'ember-cp-validations';
 
@@ -57,6 +57,6 @@ export default DS.Model.extend(Validations, {
   email: attr('string'),
 
   save() {
-    return Ember.RSVP.resolve(this);
+    return resolve(this);
   }
 });
