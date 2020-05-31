@@ -3,6 +3,9 @@ import { typeOf } from '@ember/utils';
 import Changeset from 'ember-changeset';
 
 export function buildChangeset(model) {
+  if (!model) {
+    return null;
+  }
   assert('Object does not contain any validations', typeOf(model.get('validations')) === 'instance');
 
   return {

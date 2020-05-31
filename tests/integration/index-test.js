@@ -46,4 +46,10 @@ module('Integration | Index', function(hooks) {
 
     cs.set('username', 'Offir');
   });
+
+  test('buildChangeset returns null when passed an empty model', function(assert) {
+    assert.deepEqual(buildChangeset(null), null);
+    assert.deepEqual(buildChangeset(undefined), null);
+    assert.deepEqual(buildChangeset(), null);
+  });
 });
